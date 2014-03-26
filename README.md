@@ -1,2 +1,2 @@
-frameworks-meancrud
+MEAN CRUD
 ===================

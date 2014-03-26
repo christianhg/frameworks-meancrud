@@ -1,0 +1,46 @@
+{
+    "name": "meancrud",
+    "version": "0.1.0",
+    "description": "MEAN CRUD",
+    "main": "server.js",
+    "contributers": [
+        {
+            "name": "Christian Grøngaard"
+        },
+        {
+            "name": "Flemming Poulsen"
+        },
+        {
+            "name": "Martin Smidt"
+        },
+        {
+            "name": "Søren Haaning"
+        },
+    ],
+    "dependencies": {
+        "express": "~4.0.0",
+        "mongoose": "latest",
+        "morgan": "latest",
+        "body-parser": "latest",
+        "method-override": "latest"
+    },
+    "devDependencies": {
+        "bower": "latest",
+        "grunt": "latest",
+        "grunt-cli": "latest",
+        "grunt-contrib-concat": "latest",
+        "grunt-contrib-jshint": "latest",
+        "grunt-contrib-uglify": "latest",
+        "grunt-nodemon": "latest",
+        "grunt-concurrent": "latest",
+        "grunt-contrib-watch": "latest",
+        "grunt-contrib-sass": "latest",
+        "grunt-contrib-cssmin": "latest",
+        "grunt-nodemon": "latest"
+    },
+    "scripts": {
+        "start": "node node_modules/grunt-cli/bin/grunt",
+        "test": "node node_modules/grunt-cli/bin/grunt test",
+        "postinstall": "node node_modules/bower/bin/bower install"
+    }
+}

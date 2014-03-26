@@ -1,0 +1,9 @@
+{
+	"name": "meancrud",
+	"dependencies": {
+		"angular": "latest",
+		"angular-ui-router": "latest",
+		"angular-resource": "latest",
+		"bootstrap-sass-official": "latest"
+	}
+}
