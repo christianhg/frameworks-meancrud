@@ -1,5 +1,18 @@
 MEAN CRUD
 ===================
+**M**ongoDB / **E**xpress / **A**ngularJS / **N** ode.js
+
+Technologies
+-------------------
+- Node.js
+- Express
+- MongoDB
+- AngularJS
+- Grunt
+- SASS
+
+File structure
+-------------------
 - (node_modules)
 - (bower_components)
 - app
