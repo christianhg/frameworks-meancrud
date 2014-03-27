@@ -18,12 +18,12 @@ File structure
 - app (Backend files)
     - config
         - db.js
+        - passport.js
     - controllers
         - users.js
     - models
-        - users.js
-    - routes
-        - users.js
+        - user.js
+    - routes.js
 - public (Frontend files)
     - css (Compiled and minified CSS)
         - style.css
@@ -43,6 +43,9 @@ File structure
             - style.scss
     - views
         - index.html
+        - login.html
+        - register.html
+        - users.html
     - index.html
 - .gitignore
 - README.md
