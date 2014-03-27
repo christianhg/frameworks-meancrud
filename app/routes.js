@@ -18,4 +18,7 @@ module.exports = function(app, passport) {
             res.sendfile('./public/index.html');
         });
 
+    app.route('/auth/signup')
+        .post(users.signup);
+
 };

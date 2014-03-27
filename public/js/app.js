@@ -25011,11 +25011,16 @@ meancrud.config([
                 templateUrl: 'views/index.html',
                 controller: 'IndexCtrl'
             })
-            .state('register', {
-                url: '/register',
-                templateUrl: 'views/register.html',
-                controller: 'UserRegisterCtrl'
+            .state('signup', {
+                url: '/signup',
+                templateUrl: 'views/signup.html',
+                controller: 'UserSignupCtrl'
             })
+			.state('signin', {
+				url: '/signin',
+				templateUrl: 'views/signin.html',
+				controller: 'UserSigninCtrl'
+			})
             .state('users', {
                 url: '/users',
                 templateUrl: 'views/users.html',
@@ -25023,14 +25028,28 @@ meancrud.config([
             });
     }]);
 
-meancrud.controller('UserRegisterCtrl', [
-    '$scope', 'Users',
-    function($scope, Users) {
-        $scope.register = function() {
-            Users.save($scope.formData, function(users) {
+meancrud.controller('UserSignupCtrl', [
+    '$scope', '$http', '$location', 'Authentication',
+    function($scope, $http, $location, Authentication) {
+        $scope.authentication = Authentication;
 
+        if($scope.authentication.user) $location.path('/');
+
+        $scope.signup = function() {
+            $http.post('/auth/signup', $scope.formData).success(function(user) {
+                $scope.authentication.user = user;
+                $location.path('/');
             });
         };
+    }]);
+
+meancrud.controller('UserSigninCtrl', [
+    '$scope', '$http', '$location', 'Authentication',
+    function($scope, $http, $location, Authentication) {
+        $http.post('/auth/signin', $scope.credentials).success(function(user) {
+            $scope.authentication.user = user;
+            $location.path('/');
+        })
     }]);
 
 meancrud.controller('IndexCtrl', [
@@ -25065,3 +25084,15 @@ meancrud.factory('Users', [
 			}
 		});
 	}]);
+
+meancrud.factory('Authentication', [
+	function() {
+		var _this = this;
+
+		_this._data = {
+			user: window.user
+		};
+
+		return _this._data;
+	}
+]);

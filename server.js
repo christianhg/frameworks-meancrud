@@ -17,7 +17,7 @@ mongoose.connect(db.connectionString);
 var port = process.env.PORT || 3000;
 
 // boostrap passport config
-require('./app/config/passport');
+require('./app/config/passport')();
 
 // middleware
 app.use(express.static(__dirname + '/public'));
@@ -35,4 +35,4 @@ app.listen(port);
 console.log('MEAN CRUD running on port ' + port);
 
 // expose app
-exports = module.exports = app;
+// exports = module.exports = app;

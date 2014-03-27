@@ -12,11 +12,16 @@ meancrud.config([
                 templateUrl: 'views/index.html',
                 controller: 'IndexCtrl'
             })
-            .state('register', {
-                url: '/register',
-                templateUrl: 'views/register.html',
-                controller: 'UserRegisterCtrl'
+            .state('signup', {
+                url: '/signup',
+                templateUrl: 'views/signup.html',
+                controller: 'UserSignupCtrl'
             })
+			.state('signin', {
+				url: '/signin',
+				templateUrl: 'views/signin.html',
+				controller: 'UserSigninCtrl'
+			})
             .state('users', {
                 url: '/users',
                 templateUrl: 'views/users.html',
