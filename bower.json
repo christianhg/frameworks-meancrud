@@ -1,5 +1,5 @@
 {
-	"name": "meancrud",
+	"name": "frameworks-meancrud",
 	"dependencies": {
 		"angular": "latest",
 		"angular-ui-router": "latest",
