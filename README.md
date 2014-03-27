@@ -1,21 +1,21 @@
 MEAN CRUD
 ===================
-***M***ongoDB / **E**xpress / **A**ngularJS / **N** ode.js
+MongoDB / Express / AngularJS / Node.js
 
 Technologies
 -------------------
-- Node.js
-- Express
-- MongoDB
-- AngularJS
-- Grunt
-- SASS
+- Node.js (Server platform)
+- Express (Backend JS framework)
+- MongoDB (NoSQL database)
+- AngularJS (Frontend JS framework)
+- Grunt (Task manager)
+- SASS (CSS preprocessor)
 
 File structure
 -------------------
 - (node_modules)
 - (bower_components)
-- app
+- app (Backend files)
     - config
         - db.js
     - controllers
@@ -24,22 +24,22 @@ File structure
         - users.js
     - routes
         - users.js
-- public
-    - css
+- public (Frontend files)
+    - css (Compiled and minified CSS)
         - style.css
         - style.min.css
     - img
-    - js
+    - js (Compiled and minified JS)
         - app.js
         - app.min.js
-    - src
-        - js
+    - src (CSS and JS source files)
+        - js (AngularJS source files)
             - app.js
             - controllers.js
             - directives.js
             - filters.js
             - models.js
-        - sass
+        - sass (SASS source files)
             - style.scss
     - views
         - index.html
