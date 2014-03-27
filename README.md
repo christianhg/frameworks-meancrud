@@ -1,5 +1,7 @@
 MEAN CRUD
 ===================
+- (node_modules)
+- (bower_components)
 - app
     - config
         - db.js

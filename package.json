@@ -15,7 +15,7 @@
         },
         {
             "name": "Søren Haaning"
-        },
+        }
     ],
     "dependencies": {
         "express": "~4.0.0",
@@ -39,8 +39,6 @@
         "grunt-nodemon": "latest"
     },
     "scripts": {
-        "start": "node node_modules/grunt-cli/bin/grunt",
-        "test": "node node_modules/grunt-cli/bin/grunt test",
         "postinstall": "node node_modules/bower/bin/bower install"
     }
 }

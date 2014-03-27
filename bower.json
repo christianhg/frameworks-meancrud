@@ -1,4 +1,5 @@
 {
+	"name": "meancrud",
 	"dependencies": {
 		"angular": "latest",
 		"angular-ui-router": "latest",
