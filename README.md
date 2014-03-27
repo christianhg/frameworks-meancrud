@@ -1,2 +1,4 @@
 MEAN CRUD
 ===================
+- app
+-- config
