@@ -15,22 +15,35 @@ Technologies
 
 Prerequisites
 -------------------
-Node.js
-
-Install with Homebrew
+### Node.js
+Install using Homebrew
 ```
 $ brew install node
 ```
 
-Download Binary
+Download binary
 [http://nodejs.org/download/]
 
-Bower
+### MongoDB
+Install using Homebrew
+```
+$ brew install mongodb
+```
+
+### SASS
+Install using Ruby
+```
+$ sudo gem install sass
+```
+
+### Bower
+Install using npm
 ```
 $ npm install -g bower
 ```
 
-Grunt
+### Grunt
+Install using npm
 ```
 $ sudo npm install -g grunt-cli
 ```
