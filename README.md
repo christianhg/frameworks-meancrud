@@ -4,7 +4,7 @@ MongoDB / Express / AngularJS / Node.js
 
 Technologies
 -------------------
-- Node.js (Server platform)
+- [Node.js](http://nodejs.org) (Server platform)
 - Express (Backend JS framework)
 - MongoDB (NoSQL database)
 - AngularJS (Frontend JS framework)
