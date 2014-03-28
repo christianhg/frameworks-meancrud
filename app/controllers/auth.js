@@ -23,5 +23,5 @@ exports.signup = function(req, res) {
 };
 
 exports.signin = function(req, res) {
-
+    var user = new User(req.body);
 };

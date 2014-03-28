@@ -1,5 +1,6 @@
 var User = require("../models/user.js");
 
+// get all users
 exports.getUsers = function(req, res) {
     User.find(function(err, users) {
 		if(err) res.send(err);
@@ -7,6 +8,7 @@ exports.getUsers = function(req, res) {
 	});
 };
 
+// save new user
 exports.saveUser = function(req, res) {
     new User({
 		username: req.body.username,
@@ -25,6 +27,7 @@ exports.saveUser = function(req, res) {
 	});
 };
 
+// update existing user
 exports.updateUser = function(req, res) {
     User.findById(req.body._id, function(err, user) {
 		user.username = req.body.username;
@@ -42,6 +45,7 @@ exports.updateUser = function(req, res) {
     });
 };
 
+// get single user
 exports.getUser = function(req, res) {
     User.findById(req.params.id, function(err, user) {
 		if(err) res.send(err);
@@ -49,6 +53,7 @@ exports.getUser = function(req, res) {
 	});
 };
 
+// delete user
 exports.deleteUser = function(req, res) {
     User.findById(req.params.id, function(err, user) {
 		user.remove(function(err) {
