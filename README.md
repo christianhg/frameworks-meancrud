@@ -22,7 +22,7 @@ $ brew install node
 ```
 
 Download binary
-[http://nodejs.org/download/]
+[http://nodejs.org/download/](http://nodejs.org/download/)
 
 ### MongoDB
 Install using Homebrew
