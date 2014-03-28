@@ -27,4 +27,4 @@ meancrud.config([
                 templateUrl: 'views/users.html',
                 cotroller: 'UserIndexCtrl'
             });
-    }]);
+		}]);

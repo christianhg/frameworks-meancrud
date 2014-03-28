@@ -19,17 +19,5 @@ meancrud.controller('UserSigninCtrl', [
         $http.post('/auth/signin', $scope.credentials).success(function(user) {
             $scope.authentication.user = user;
             $location.path('/');
-        })
-    }]);
-
-meancrud.controller('IndexCtrl', [
-    '$scope', 'Users',
-    function($scope, Users) {
-        $scope.users = Users.query();
-    }]);
-
-meancrud.controller('UserIndexCtrl', [
-    '$scope', 'Users',
-    function($scope, Users) {
-        $scope.users = Users.query();
+        });
     }]);

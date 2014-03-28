@@ -11,45 +11,18 @@ Technologies
 - Grunt (Task manager)
 - SASS (CSS preprocessor)
 
-File structure
+Installation
 -------------------
-- (node_modules)
-- (bower_components)
-- app (Backend files)
-    - config
-        - db.js
-        - passport.js
-    - controllers
-        - users.js
-    - models
-        - user.js
-    - routes.js
-- public (Frontend files)
-    - css (Compiled and minified CSS)
-        - style.css
-        - style.min.css
-    - img
-    - js (Compiled and minified JS)
-        - app.js
-        - app.min.js
-    - src (CSS and JS source files)
-        - js (AngularJS source files)
-            - app.js
-            - controllers.js
-            - directives.js
-            - filters.js
-            - models.js
-        - sass (SASS source files)
-            - style.scss
-    - views
-        - index.html
-        - login.html
-        - register.html
-        - users.html
-    - index.html
-- .gitignore
-- README.md
-- bower.json
-- gruntfile.js
-- package.js
-- server.js
+```
+$ npm install
+```
+
+Run
+-------------------
+```
+$ grunt
+```
+
+Documentation
+-------------------
+...
