@@ -16,12 +16,12 @@ Technologies
 Prerequisites
 -------------------
 ### Node.js (and npm)
-Install using [http://brew.sh](Homebrew)
+Install using [Homebrew](http://brew.sh)
 ```
 $ brew install node
 ```
 
-or [http://nodejs.org/download/](download binary)
+or [download binary](http://nodejs.org/download/)
 
 
 ### MongoDB
@@ -31,7 +31,7 @@ $ brew install mongodb
 ```
 
 ### SASS
-Install using [https://www.ruby-lang.org](Ruby)
+Install using [Ruby](https://www.ruby-lang.org)
 ```
 $ sudo gem install sass
 ```
