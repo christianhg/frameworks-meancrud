@@ -1,6 +1,6 @@
 MEAN CRUD
 ===================
-<stron>M</strong>ongoDB / Express / AngularJS / Node.js
+MongoDB / Express / AngularJS / Node.js
 
 Technologies
 -------------------
@@ -15,6 +15,16 @@ Technologies
 
 Prerequisites
 -------------------
+Node.js
+
+Install with Homebrew
+```
+$ brew install node
+```
+
+Download Binary
+[http://nodejs.org/download/]
+
 Bower
 ```
 $ npm install -g bower
