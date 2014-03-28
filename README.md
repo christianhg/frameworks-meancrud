@@ -20,7 +20,6 @@ Install using [Homebrew](http://brew.sh)
 ```
 $ brew install node
 ```
-
 or [download binary](http://nodejs.org/download/)
 
 
@@ -29,12 +28,14 @@ Install using Homebrew
 ```
 $ brew install mongodb
 ```
+or [download binary](http://www.mongodb.org/downloads)
 
 ### SASS
 Install using [Ruby](https://www.ruby-lang.org)
 ```
 $ sudo gem install sass
 ```
+or [download binary](http://sass-lang.com/install)
 
 ### Bower
 Install using npm
