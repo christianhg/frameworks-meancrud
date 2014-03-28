@@ -1,6 +1,6 @@
 MEAN CRUD
 ===================
-MongoDB / Express / AngularJS / Node.js
+<stron>M</strong>ongoDB / Express / AngularJS / Node.js
 
 Technologies
 -------------------
@@ -10,10 +10,12 @@ Technologies
 - [AngularJS](http://angularjs.org) (Frontend JS framework)
 - [Grunt](http://gruntjs.com) (Task manager)
 - [SASS](http://sass-lang.com) (CSS preprocessor)
+- [Bower](http://bower.io) (Frontend dependency manager)
+- [npm](http://npmjs.org) (Backend dependency manager)
 
 Prerequisites
 -------------------
-[Bower](http://bower.io)
+Bower
 ```
 $ npm install -g bower
 ```
