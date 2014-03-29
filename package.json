@@ -1,7 +1,16 @@
 {
-    "name": "meancrud",
+    "name": "frameworks-meancrud",
     "version": "0.1.0",
     "description": "MEAN CRUD",
+    "private": false,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/christianhg/frameworks-meancrud.git"
+    },
+    "engines": {
+        "node": "0.10.x",
+        "npm": "1.4.x"
+    },
     "main": "server.js",
     "contributers": [
         {
@@ -22,7 +31,9 @@
         "mongoose": "latest",
         "morgan": "latest",
         "body-parser": "latest",
-        "method-override": "latest"
+        "method-override": "latest",
+        "passport": "latest",
+        "passport-local": "latest"
     },
     "devDependencies": {
         "bower": "latest",

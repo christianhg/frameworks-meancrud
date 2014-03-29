@@ -1,39 +1,68 @@
 MEAN CRUD
 ===================
-- (node_modules)
-- (bower_components)
-- app
-    - config
-        - db.js
-    - controllers
-        - users.js
-    - models
-        - users.js
-    - routes
-        - users.js
-- public
-    - css
-        - style.css
-        - style.min.css
-    - img
-    - js
-        - app.js
-        - app.min.js
-    - src
-        - js
-            - app.js
-            - controllers.js
-            - directives.js
-            - filters.js
-            - models.js
-        - sass
-            - style.scss
-    - views
-        - index.html
-    - index.html
-- .gitignore
-- README.md
-- bower.json
-- gruntfile.js
-- package.js
-- server.js
+MongoDB / Express / AngularJS / Node.js
+
+Technologies
+-------------------
+- [Node.js](http://nodejs.org) (Server platform)
+- [Express](http://expressjs.com) (Backend JS framework)
+- [MongoDB](http://mongodb.com) (NoSQL database)
+- [AngularJS](http://angularjs.org) (Frontend JS framework)
+- [Grunt](http://gruntjs.com) (Task manager)
+- [SASS](http://sass-lang.com) (CSS preprocessor)
+- [Bower](http://bower.io) (Frontend dependency manager)
+- [npm](http://npmjs.org) (Backend dependency manager)
+
+Prerequisites
+-------------------
+### Node.js (and npm)
+Install using [Homebrew](http://brew.sh)
+```
+$ brew install node
+```
+or [download binary](http://nodejs.org/download/)
+
+
+### MongoDB
+Install using Homebrew
+```
+$ brew install mongodb
+```
+or [download binary](http://www.mongodb.org/downloads)
+
+### SASS
+Install using [Ruby](https://www.ruby-lang.org)
+```
+$ sudo gem install sass
+```
+or [download binary](http://sass-lang.com/install)
+
+### Bower
+Install using npm
+```
+$ npm install -g bower
+```
+
+### Grunt
+Install using npm
+```
+$ sudo npm install -g grunt-cli
+```
+
+Installation
+-------------------
+Install application using npm
+```
+$ npm install
+```
+
+Run
+-------------------
+Run application using Grunt
+```
+$ grunt
+```
+
+Documentation
+-------------------
+...
