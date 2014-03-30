@@ -1,4 +1,4 @@
-var User = require("../models/user.js");
+var User = require("../models/users.js");
 
 exports.signup = function(req, res) {
     var user = new User(req.body);

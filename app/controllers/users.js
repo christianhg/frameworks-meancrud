@@ -1,4 +1,4 @@
-var User = require("../models/user.js");
+var User = require("../models/users.js");
 
 // get all users
 exports.getUsers = function(req, res) {

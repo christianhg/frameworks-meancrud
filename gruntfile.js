@@ -134,5 +134,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     grunt.option('force', true);
-    grunt.registerTask('default', ['jshint', 'concurrent']);
+    grunt.registerTask(
+        'default', [
+            'jshint',
+            'concurrent'
+        ]
+    );
 };
