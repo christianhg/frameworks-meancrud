@@ -15,6 +15,7 @@ Technologies
 
 Prerequisites
 -------------------
+Be sure to have the following prerequisites installed.
 ### Node.js (and npm)
 Install using [Homebrew](http://brew.sh)
 ```
