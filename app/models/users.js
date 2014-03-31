@@ -1,6 +1,10 @@
+/*
+ * module dependencies
+ */
 var mongoose = require("mongoose");
 var crypto = require('crypto');
 
+// user schema
 var UserSchema = new mongoose.Schema({
 	username: {
 		type: String,
@@ -34,6 +38,7 @@ var UserSchema = new mongoose.Schema({
 	}
 });
 
+// before saving new user
 UserSchema.pre('save', function(next) {
 	if(this.password) {
 		this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
@@ -43,13 +48,16 @@ UserSchema.pre('save', function(next) {
 	next();
 });
 
+// hash password
 UserSchema.methods.hashPassword = function(password) {
 	return crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64');
 };
 
+// compare passwords
 UserSchema.methods.authenticate = function(password) {
 	return this.password === this.hashPassword(password);
 };
 
+// expose model
 var User = mongoose.model("User", UserSchema);
 module.exports = User;

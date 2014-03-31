@@ -15,16 +15,21 @@ meancrud.config([
             .state('signup', {
                 url: '/signup',
                 templateUrl: 'views/signup.html',
-                controller: 'UserSignupCtrl'
+                controller: 'SignupCtrl'
             })
 			.state('signin', {
 				url: '/signin',
 				templateUrl: 'views/signin.html',
-				controller: 'UserSigninCtrl'
+				controller: 'SigninCtrl'
 			})
             .state('users', {
                 url: '/users',
                 templateUrl: 'views/users.html',
-                cotroller: 'UserIndexCtrl'
-            });
+                controller: 'UserIndexCtrl'
+            })
+			.state('movies', {
+				url: '/movies',
+				templateUrl: 'views/movies.html',
+				controller: 'MoviesIndexCtrl'
+			});
 		}]);

@@ -33,6 +33,7 @@
 		"connect-flash": "latest",
         "cookie-parser": "latest",
         "mongoose": "latest",
+        "body-parser": "latest",
         "method-override": "latest",
         "passport": "latest",
         "passport-local": "latest"

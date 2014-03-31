@@ -3,6 +3,7 @@
  */
 // node.js web framework
 var express = require('express');
+var bodyParser = require('body-parser');
 // session middleware
 var session = require('express-session');
 // store and retrieve messages from session
@@ -16,7 +17,9 @@ var mongoose = require('mongoose');
 // authentication middleware
 var passport = require('passport');
 
-// config files
+/*
+ * config files
+ */
 var config = require('./app/config/app');
 var dbConfig = require('./app/config/db');
 var passportConfig = require('./app/config/passport');
@@ -41,14 +44,18 @@ mongoose.connect(dbConfig.connectionString, function(err) {
     }));
 });
 
+/*
+ * middleware
+ */
 // static folder
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser());
 app.use(methodOverride());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-// require routes
+// require routes, inject app and passport
 require('./app/routes')(app, passport);
 
 // start app by listening on port

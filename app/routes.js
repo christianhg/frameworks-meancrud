@@ -1,11 +1,7 @@
-// bootstrap user model
-var User = require('./models/users.js');
 // bootstrap user controllers
 var users = require('./controllers/users');
 // bootstrap auth controllers
 var auth = require('./controllers/auth');
-
-var passport = require('passport');
 
 module.exports = function(app, passport) {
     // user api routes
@@ -29,14 +25,8 @@ module.exports = function(app, passport) {
     app.route('/auth/signin')
         .post(auth.signin);
 
-    /*app.route('/#/').
-        get(passport.authenticate('local', function(req, res) {
-            res.redirect('/#/users');
-        }));*/
+    app.route('/auth/signout')
+        .get(auth.signout);
 
-    // catch all other routes and display page
-    /*app.route('*')
-        .get(function(req, res) {
-            res.sendfile('./public/index.html');
-        });*/
+
 };

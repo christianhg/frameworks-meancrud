@@ -25014,27 +25014,31 @@ meancrud.config([
             .state('signup', {
                 url: '/signup',
                 templateUrl: 'views/signup.html',
-                controller: 'UserSignupCtrl'
+                controller: 'SignupCtrl'
             })
 			.state('signin', {
 				url: '/signin',
 				templateUrl: 'views/signin.html',
-				controller: 'UserSigninCtrl'
+				controller: 'SigninCtrl'
 			})
             .state('users', {
                 url: '/users',
                 templateUrl: 'views/users.html',
-                cotroller: 'UserIndexCtrl'
-            });
+                controller: 'UserIndexCtrl'
+            })
+			.state('movies', {
+				url: '/movies',
+				templateUrl: 'views/movies.html',
+				controller: 'MoviesIndexCtrl'
+			});
 		}]);
 
 
 
-meancrud.controller('UserSignupCtrl', [
+meancrud.controller('SignupCtrl', [
     '$scope', '$http', '$location', 'Authentication',
     function($scope, $http, $location, Authentication) {
         $scope.authentication = Authentication;
-
         if($scope.authentication.user) $location.path('/');
 
         $scope.signup = function() {
@@ -25045,29 +25049,39 @@ meancrud.controller('UserSignupCtrl', [
         };
     }]);
 
-meancrud.controller('UserSigninCtrl', [
+meancrud.controller('SigninCtrl', [
     '$scope', '$http', '$location', 'Authentication',
     function($scope, $http, $location, Authentication) {
-        $http.post('/auth/signin', $scope.credentials).success(function(user) {
+        $scope.authentication = Authentication;
+        if($scope.authentication.user) $location.path('/');
+
+        $http.post('/auth/signin', $scope.formData).success(function(user) {
             $scope.authentication.user = user;
             $location.path('/');
         });
     }]);
 
 meancrud.controller('IndexCtrl', [
-    '$scope', 'Users',
-    function($scope, Users) {
-        $scope.hej = "HWH";
-        $scope.users = Users.query();
-        
+    '$scope', '$location', 'Authentication',
+    function($scope, $location, Authentication) {
+        $scope.authentication = Authentication;
+        if($scope.authentication.user) $location.path('/movies');
     }]);
+
+meancrud.controller('MoviesIndexCtrl', [
+    '$scope', 'Movies', '$location', 'Authentication',
+    function($scope, Movies, $location, Authentication) {
+        $scope.movies = Movies.query();
+
+        $scope.authentication = Authentication;
+        if(!$scope.authentication.user) $location.path('/');
+    }
+]);
 
 meancrud.controller('UserIndexCtrl', [
     '$scope', 'Users',
     function($scope, Users) {
-        /*$scope.hej = "HWH";
-        $scope.users = Users.query();*/
-        alert("hej");
+        $scope.users = Users.query();
     }]);
 
 meancrud.factory('Authentication', [
@@ -25081,6 +25095,25 @@ meancrud.factory('Authentication', [
         return _this._data;
     }
 ]);
+
+meancrud.factory('Movies', [
+    '$resource',
+    function($resource) {
+        return $resource('/api/movies/:id', { id: "@id" }, {
+            'save': {
+                method: 'POST',
+                isArray: true
+            },
+            'update': {
+                method: 'PUT',
+                isArray: true
+            },
+            'delete': {
+                method: 'DELETE',
+                isArray: true
+            }
+        });
+    }]);
 
 meancrud.factory('Users', [
     '$resource',

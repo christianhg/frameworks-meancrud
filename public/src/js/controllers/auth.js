@@ -1,8 +1,7 @@
-meancrud.controller('UserSignupCtrl', [
+meancrud.controller('SignupCtrl', [
     '$scope', '$http', '$location', 'Authentication',
     function($scope, $http, $location, Authentication) {
         $scope.authentication = Authentication;
-
         if($scope.authentication.user) $location.path('/');
 
         $scope.signup = function() {
@@ -13,10 +12,13 @@ meancrud.controller('UserSignupCtrl', [
         };
     }]);
 
-meancrud.controller('UserSigninCtrl', [
+meancrud.controller('SigninCtrl', [
     '$scope', '$http', '$location', 'Authentication',
     function($scope, $http, $location, Authentication) {
-        $http.post('/auth/signin', $scope.credentials).success(function(user) {
+        $scope.authentication = Authentication;
+        if($scope.authentication.user) $location.path('/');
+
+        $http.post('/auth/signin', $scope.formData).success(function(user) {
             $scope.authentication.user = user;
             $location.path('/');
         });
