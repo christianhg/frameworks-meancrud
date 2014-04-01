@@ -3,6 +3,7 @@
  */
 // node.js web framework
 var express = require('express');
+// body parser
 var bodyParser = require('body-parser');
 // session middleware
 var session = require('express-session');
@@ -20,7 +21,7 @@ var passport = require('passport');
 /*
  * config files
  */
-var config = require('./app/config/app');
+var appConfig = require('./app/config/app');
 var dbConfig = require('./app/config/db');
 var passportConfig = require('./app/config/passport');
 
@@ -36,7 +37,7 @@ mongoose.connect(dbConfig.connectionString, function(err) {
     var mongoStore = require('connect-mongodb');
     // session middleware
     app.use(session({
-        secret: config.sessionSecret,
+        secret: appConfig.sessionSecret,
         // session store instance
         store: new mongoStore({
             db: mongoose.connection.db
@@ -59,10 +60,7 @@ app.use(flash());
 require('./app/routes')(app, passport);
 
 // start app by listening on port
-app.listen(config.port);
+app.listen(appConfig.port);
 
 // log initialization
-console.log('MEAN CRUD running on port ' + config.port);
-
-// expose app
-// exports = module.exports = app;
+console.log('MEAN CRUD running on port ' + appConfig.port);
