@@ -4,6 +4,7 @@
 var mongoose = require('mongoose');
 var User = require('../models/users.js');
 var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 exports.signup = function(req, res) {
     var user = new User(req.body);
