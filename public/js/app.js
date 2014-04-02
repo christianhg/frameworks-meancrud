@@ -25006,56 +25006,62 @@ meancrud.config([
     function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider
+			// front page
             .state('index', {
                 url: '/',
                 templateUrl: 'views/index.html',
-                controller: 'IndexCtrl'
+                controller: 'CoreIndexCtrl'
             })
+			// sign up form
             .state('signup', {
                 url: '/signup',
                 templateUrl: 'views/signup.html',
-                controller: 'SignupCtrl'
+                controller: 'AuthSignupCtrl'
             })
+			// sign in form
 			.state('signin', {
 				url: '/signin',
 				templateUrl: 'views/signin.html',
-				controller: 'SigninCtrl'
+				controller: 'AuthSigninCtrl'
 			})
-            .state('users', {
-                url: '/users',
-                templateUrl: 'views/users.html',
-                controller: 'UsersCtrl'
-            })
-			.state('users.id', {
-				url: '/:id',
-				templateUrl: 'views/users.id.html',
-				controller: 'UserCtrl'
-			})
+			// show all movies
 			.state('movies', {
 				url: '/movies',
 				templateUrl: 'views/movies.html',
 				controller: 'MoviesCtrl'
 			})
+			// add new movie
 			.state('movies.add', {
 				url: '/add',
 				templateUrl: 'views/movies.add.html',
 				controller: 'MoviesAddCtrl'
 			})
+			// show existing movie by id
 			.state('movies.id', {
 				url: '/:id',
 				templateUrl: 'views/movies.id.html',
 				controller: 'MovieCtrl'
 			})
+			// edit movie
 			.state('movies.id.edit', {
 				url: '/edit',
 				templateUrl: 'views/movies.id.edit.html',
 				controller: 'MovieEditCtrl'
 			});
-		}]);
+	}
+]);
 
+meancrud.directive('movie', function() {
 
+});
 
-meancrud.controller('SignupCtrl', [
+meancrud.filter('imdbURL', function() {
+    return function(imdbId) {
+        return 'http://www.imdb.com/title/' + imdbId;
+    };
+});
+
+meancrud.controller('AuthSignupCtrl', [
     '$scope', '$http', '$location', 'Authentication',
     function($scope, $http, $location, Authentication) {
         $scope.authentication = Authentication;
@@ -25069,7 +25075,7 @@ meancrud.controller('SignupCtrl', [
         };
     }]);
 
-meancrud.controller('SigninCtrl', [
+meancrud.controller('AuthSigninCtrl', [
     '$scope', '$http', '$location', 'Authentication',
     function($scope, $http, $location, Authentication) {
         $scope.authentication = Authentication;
@@ -25081,7 +25087,7 @@ meancrud.controller('SigninCtrl', [
         });
     }]);
 
-meancrud.controller('IndexCtrl', [
+meancrud.controller('CoreIndexCtrl', [
     '$scope', '$location', 'Authentication',
     function($scope, $location, Authentication) {
         $scope.authentication = Authentication;
@@ -25096,7 +25102,6 @@ meancrud.controller('MoviesCtrl', [
         /*$scope.authentication = Authentication;
         if(!$scope.authentication.user) $location.path('/');*/
 
-
         $scope.deleteMovie = function(id) {
             Movies.delete({}, {'id': id}, function(movies) {
                 $scope.movies = movies;
@@ -25106,12 +25111,14 @@ meancrud.controller('MoviesCtrl', [
 ]);
 
 meancrud.controller('MoviesAddCtrl', [
-    '$scope', 'Movies', '$location',
-    function($scope, Movies, $location) {
+    '$rootScope', '$scope', 'Movies', '$location',
+    function($rootScope, $scope, Movies, $location) {
+        console.log($rootScope);
+
         $scope.saveMovie = function() {
             Movies.save($scope.formData, function(movies) {
-                $location.path('/movies');
-                //$scope.movies = movies;
+                $rootScope.movies = movies;
+
             });
         };
     }
@@ -25139,20 +25146,6 @@ meancrud.controller('MovieEditCtrl', [
     }
 ]);
 
-meancrud.controller('UsersCtrl', [
-    '$scope', 'Users',
-    function($scope, Users) {
-        $scope.users = Users.query();
-    }
-]);
-
-meancrud.controller('UserCtrl', [
-    '$scope', 'Users', '$stateParams',
-    function($scope, Users, $stateParams) {
-        $scope.user = Users.get({id: $stateParams.id});
-    }
-]);
-
 meancrud.factory('Authentication', [
     function() {
         var _this = this;
@@ -25169,25 +25162,6 @@ meancrud.factory('Movies', [
     '$resource',
     function($resource) {
         return $resource('/api/movies/:id', { id: "@id" }, {
-            'save': {
-                method: 'POST',
-                isArray: true
-            },
-            'update': {
-                method: 'PUT',
-                isArray: true
-            },
-            'delete': {
-                method: 'DELETE',
-                isArray: true
-            }
-        });
-    }]);
-
-meancrud.factory('Users', [
-    '$resource',
-    function($resource) {
-        return $resource('/api/users/:id', { id: "@id" }, {
             'save': {
                 method: 'POST',
                 isArray: true

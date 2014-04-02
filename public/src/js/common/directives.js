@@ -1,0 +1,3 @@
+meancrud.directive('movie', function() {
+
+});

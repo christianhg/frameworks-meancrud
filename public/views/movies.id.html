@@ -2,7 +2,7 @@
 <div ui-view>
     <ul>
         <li>{{movie.year}}</li>
-        <li><a href="http://www.imdb.com/title/{{movie.imdb}}">http://www.imdb.com/title/{{movie.imdb}}</a></li>
+        <li><a href="{{movie.imdb|imdbURL}}">{{movie.imdb|imdbURL}}</a></li>
     </ul>
     <a class="btn btn-default" ng-href="#/movies">Cancel</a>
 </div>

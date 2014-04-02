@@ -2,10 +2,14 @@
  * module dependencies
  */
 var mongoose = require('mongoose');
-var User = require('../models/users.js');
+var User = require('../models/user.js');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+/*
+ * controllers
+ */
+// sign up new user
 exports.signup = function(req, res) {
     var user = new User(req.body);
     user.provider = 'local';
@@ -28,6 +32,7 @@ exports.signup = function(req, res) {
     });
 };
 
+// sign in as existing user
 exports.signin = function(req, res, next) {
 	/*passport.authenticate('local', function(err, user, info) {
 		if (err || !user) {
@@ -44,6 +49,7 @@ exports.signin = function(req, res, next) {
 	})(req, res, next);*/
 };
 
+// sign out
 exports.signout = function(req, res) {
     req.logout();
 	res.redirect('/');

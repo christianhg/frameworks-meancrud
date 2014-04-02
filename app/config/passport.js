@@ -1,5 +1,8 @@
+/*
+* module dependencies
+*/
 var passport = require('passport');
-var User = require("../models/users.js");
+var User = require("../models/user.js");
 
 module.exports = function() {
 	// serialize sessions

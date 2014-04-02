@@ -1,5 +1,11 @@
-var Movie = require("../models/movies.js");
+/*
+ * module dependencies
+ */
+var Movie = require("../models/movie.js");
 
+/*
+ * controllers
+ */
 // get all movies
 exports.getMovies = function(req, res) {
     Movie.find(function(err, movies) {

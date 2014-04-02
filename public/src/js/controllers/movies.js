@@ -6,7 +6,6 @@ meancrud.controller('MoviesCtrl', [
         /*$scope.authentication = Authentication;
         if(!$scope.authentication.user) $location.path('/');*/
 
-
         $scope.deleteMovie = function(id) {
             Movies.delete({}, {'id': id}, function(movies) {
                 $scope.movies = movies;
@@ -16,12 +15,14 @@ meancrud.controller('MoviesCtrl', [
 ]);
 
 meancrud.controller('MoviesAddCtrl', [
-    '$scope', 'Movies', '$location',
-    function($scope, Movies, $location) {
+    '$rootScope', '$scope', 'Movies', '$location',
+    function($rootScope, $scope, Movies, $location) {
+        console.log($rootScope);
+
         $scope.saveMovie = function() {
             Movies.save($scope.formData, function(movies) {
-                $location.path('/movies');
-                //$scope.movies = movies;
+                $rootScope.movies = movies;
+
             });
         };
     }

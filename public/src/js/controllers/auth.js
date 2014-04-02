@@ -1,4 +1,4 @@
-meancrud.controller('SignupCtrl', [
+meancrud.controller('AuthSignupCtrl', [
     '$scope', '$http', '$location', 'Authentication',
     function($scope, $http, $location, Authentication) {
         $scope.authentication = Authentication;
@@ -12,7 +12,7 @@ meancrud.controller('SignupCtrl', [
         };
     }]);
 
-meancrud.controller('SigninCtrl', [
+meancrud.controller('AuthSigninCtrl', [
     '$scope', '$http', '$location', 'Authentication',
     function($scope, $http, $location, Authentication) {
         $scope.authentication = Authentication;
