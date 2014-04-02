@@ -25,11 +25,31 @@ meancrud.config([
             .state('users', {
                 url: '/users',
                 templateUrl: 'views/users.html',
-                controller: 'UserIndexCtrl'
+                controller: 'UsersCtrl'
             })
+			.state('users.id', {
+				url: '/:id',
+				templateUrl: 'views/users.id.html',
+				controller: 'UserCtrl'
+			})
 			.state('movies', {
 				url: '/movies',
 				templateUrl: 'views/movies.html',
-				controller: 'MoviesIndexCtrl'
+				controller: 'MoviesCtrl'
+			})
+			.state('movies.add', {
+				url: '/add',
+				templateUrl: 'views/movies.add.html',
+				controller: 'MoviesAddCtrl'
+			})
+			.state('movies.id', {
+				url: '/:id',
+				templateUrl: 'views/movies.id.html',
+				controller: 'MovieCtrl'
+			})
+			.state('movies.id.edit', {
+				url: '/edit',
+				templateUrl: 'views/movies.id.edit.html',
+				controller: 'MovieEditCtrl'
 			});
 		}]);

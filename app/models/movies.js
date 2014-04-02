@@ -4,7 +4,7 @@
 var mongoose = require("mongoose");
 
 // movie schema
-var MovieSchema = new mongoose.Schema({
+var movieSchema = new mongoose.Schema({
     title: {
         type: String,
         trim: true
@@ -14,7 +14,7 @@ var MovieSchema = new mongoose.Schema({
         trim: true
     },
     imdb: {
-        type: Number,
+        type: String,
         trim: true
     },
     created: {
@@ -23,5 +23,5 @@ var MovieSchema = new mongoose.Schema({
     }
 });
 
-var Movie = mongoose.model("Movie", MovieSchema);
+var Movie = mongoose.model('Movie', movieSchema, 'movies');
 module.exports = Movie;

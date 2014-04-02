@@ -1,5 +1,26 @@
 <h2>Movies</h2>
-{{ movies }}
-
-{{ authentication }}
-<a href="/auth/signout">Sign out</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Year</th>
+            <th>IMDb-Id</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="movie in movies">
+            <td>{{movie.title}}</td>
+            <td>{{movie.year}}</td>
+            <td>{{movie.imdb}}</td>
+            <td>
+                <a ng-href="#/movies/{{movie._id}}" class="btn btn-sm btn-primary">Show</a>
+                <a ng-href="#/movies/{{movie._id}}/edit" class="btn btn-sm btn-warning">Edit</a>
+                <button type="submit" ng-click="deleteMovie(movie._id)" class="btn btn-sm btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div ui-view>
+    <a class="btn btn-success" ng-href="#/movies/add">Add movie</a>
+</div>
