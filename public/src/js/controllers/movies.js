@@ -1,8 +1,6 @@
 meancrud.controller('MoviesCtrl', [
     '$scope', 'Movies', 'Authentication',
     function($scope, Movies, Authentication) {
-        $scope.movies = Movies.query();
-
         /*$scope.authentication = Authentication;
         if(!$scope.authentication.user) $location.path('/');*/
 
@@ -11,18 +9,21 @@ meancrud.controller('MoviesCtrl', [
                 $scope.movies = movies;
             });
         };
+
+        $scope.updateMovies = function() {
+            $scope.movies = Movies.query();
+        };
+
+        $scope.updateMovies();
     }
 ]);
 
 meancrud.controller('MoviesAddCtrl', [
-    '$rootScope', '$scope', 'Movies', '$location',
-    function($rootScope, $scope, Movies, $location) {
-        console.log($rootScope);
-
+    '$scope', 'Movies', '$location',
+    function($scope, Movies, $location) {
         $scope.saveMovie = function() {
             Movies.save($scope.formData, function(movies) {
-                $rootScope.movies = movies;
-
+                $scope.$parent.movies = movies;
             });
         };
     }
@@ -44,7 +45,8 @@ meancrud.controller('MovieEditCtrl', [
 
         $scope.updateMovie = function() {
             Movies.update($scope.formData, function(movies) {
-                $scope.movies = movies;
+                $scope.$parent.$parent.updateMovies();
+                $scope.$parent.movie = $scope.movie;
             });
         };
     }
