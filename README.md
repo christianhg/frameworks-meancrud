@@ -67,9 +67,9 @@ $ grunt
 Documentation
 -------------------
 ### Site Overview
-![Site Overview](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/SiteOverview.png)
+![Site Overview](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/diagrams/SiteOverview.png)
 
 ### Use Cases
 
 ### Flow of Control
-![Flow of Control](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/FlowOfControl.png)
+![Flow of Control](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/diagrams/FlowOfControl.png)
