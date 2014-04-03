@@ -70,9 +70,9 @@ Documentation
 ![Site Overview](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/diagrams/SiteOverview.png)
 
 ### Use Cases
-![index](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screensots/1-index.png)
+![index](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screenshots/1-index.png)
 
-![signup](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screensots/1-signup.png)
+![signup](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screenshots/1-signup.png)
 
 ### Flow of Control
 ![Flow of Control](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/diagrams/FlowOfControl.png)
