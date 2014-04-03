@@ -71,8 +71,8 @@ Documentation
 
 ### Use Case
 1. /#/
-Sign up to create new user
 ![index](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screenshots/1-index.png)
+Sign up to create new user
 
 2. /#/signup
 ![signup](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screenshots/2-signup.png)
