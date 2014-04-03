@@ -79,5 +79,23 @@ Documentation
 3. /#/movies
 ![signup](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screenshots/3-movies.png)
 
+4. /#/movies/add
+![signup](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screenshots/4-movies.add.png)
+
+5. /#/movies/add
+![signup](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screenshots/5-movies.add.png)
+
+6. /#/movies/:id
+![signup](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screenshots/6-movies.id.png)
+
+7. /#/movies/:id/edit
+![signup](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screenshots/7-movies.id.edit.png)
+
+8. /#/movies (delete)
+![signup](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screenshots/9-movies (delete).png)
+
+9. /#/movies
+![signup](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screenshots/9-movies.png)
+
 ### Flow of Control
 ![Flow of Control](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/diagrams/FlowOfControl.png)
