@@ -92,7 +92,7 @@ Documentation
 ![signup](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screenshots/7-movies.id.edit.png)
 
 8. /#/movies (delete)
-![signup](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screenshots/9-movies (delete).png)
+![signup](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screenshots/9-movies-delete.png)
 
 9. /#/movies
 ![signup](https://raw.githubusercontent.com/christianhg/frameworks-meancrud/master/app/docs/screenshots/9-movies.png)
