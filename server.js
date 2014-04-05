@@ -1,59 +1,50 @@
 /*
  * module dependencies
  */
-// node.js web framework
-var express = require('express');
-// body parser
-var bodyParser = require('body-parser');
-// session middleware
-var session = require('express-session');
-// store and retrieve messages from session
-var flash = require('connect-flash');
-// cookie parsing middleware
-var cookieParser = require('cookie-parser');
-// faux http method support
-var methodOverride = require('method-override');
-// mongodb object-modeling
-var mongoose = require('mongoose');
-// authentication middleware
-var passport = require('passport');
+var express = require('express'),
+    morgan = require('morgan'),
+    bodyParser = require('body-parser'),
+    session = require('express-session'),
+    flash = require('connect-flash'),
+    cookieParser = require('cookie-parser'),
+    methodOverride = require('method-override'),
+    mongoose = require('mongoose'),
+    passport = require('passport');
 
 /*
  * config files
  */
 var appConfig = require('./app/config/app');
 var dbConfig = require('./app/config/db');
-var passportConfig = require('./app/config/passport');
 
 // initialize express app
 var app = express();
 
-// cookie middleware must be used before session middleware
-app.use(cookieParser());
-
 // bootstap db connection
-mongoose.connect(dbConfig.connectionString, function(err) {
-    // mongodb session store module
-    var mongoStore = require('connect-mongodb');
-    // session middleware
-    app.use(session({
-        secret: appConfig.sessionSecret,
-        // session store instance
-        store: new mongoStore({
-            db: mongoose.connection.db
-        })
-    }));
-});
+mongoose.connect(dbConfig.connectionString);
+// configure passport object
+require('./app/config/passport')(passport);
 
 /*
  * middleware
  */
 // static folder
 app.use(express.static(__dirname + '/public'));
+// log all requests in console
+app.use(morgan('dev'));
+// cookie middleware must be used before session middleware
+app.use(cookieParser());
+// session middleware
+app.use(session({ secret: appConfig.sessionSecret }));
+// get data from html forms
 app.use(bodyParser());
+// faux http method support
 app.use(methodOverride());
+// authentication middleware
 app.use(passport.initialize());
+// login sessions
 app.use(passport.session());
+// store and retrieve messages from session
 app.use(flash());
 
 // require routes, inject app and passport

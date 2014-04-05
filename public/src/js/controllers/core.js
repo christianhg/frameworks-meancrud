@@ -1,6 +1,9 @@
 meancrud.controller('CoreIndexCtrl', [
-    '$scope', '$location', 'Authentication',
-    function($scope, $location, Authentication) {
-        $scope.authentication = Authentication;
-        if($scope.authentication.user) $location.path('/movies');
+    '$scope', '$http', '$location',
+    function($scope, $http, $location) {
+        $http.get('/auth/isLoggedIn').success(function(user) {
+            if(user !== '0') {
+                $location.path('/movies');
+            }
+        });
     }]);

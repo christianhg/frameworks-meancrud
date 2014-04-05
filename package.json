@@ -29,14 +29,15 @@
     "dependencies": {
         "express": "~4.0.0",
         "express-session": "latest",
-        "connect-mongodb": "latest",
+        "morgan": "latest",
 		"connect-flash": "latest",
         "cookie-parser": "latest",
         "mongoose": "latest",
         "body-parser": "latest",
         "method-override": "latest",
         "passport": "latest",
-        "passport-local": "latest"
+        "passport-local": "latest",
+        "bcrypt-nodejs": "latest"
     },
     "devDependencies": {
         "bower": "latest",

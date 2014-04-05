@@ -1,10 +1,7 @@
-/*
-* module dependencies
-*/
-var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 var User = require("../models/user.js");
 
-module.exports = function() {
+module.exports = function(passport) {
 	// serialize sessions
 	passport.serializeUser(function(user, done) {
 		done(null, user.id);
@@ -12,13 +9,70 @@ module.exports = function() {
 
 	// deserialize sessions
 	passport.deserializeUser(function(id, done) {
-		User.findOne({
-			_id: id
-		}, function(err, user) {
+		User.findById(id, function(err, user) {
 			done(err, user);
 		});
 	});
 
-	// Initialize strategies
-	require('./strategies/local')();
+	passport.use('local-signup', new LocalStrategy({
+		usernameField: 'username',
+		passwordField: 'password',
+	},
+	function(username, password, done) {
+		User.findOne({
+			'local.username': username
+		},
+		function(err, user) {
+			// if an exception occured
+			if (err) {
+				console.log(err);
+				return done(err);
+			}
+			if(user) {
+				console.log("username already taken");
+				return done(null, false);
+			} else {
+				var newUser = new User();
+				newUser.local.username = username;
+				newUser.local.password = newUser.generateHash(password);
+
+				newUser.save(function(err) {
+					if(err) {
+						throw err;
+					}
+					return done(null, newUser);
+				});
+			}
+		});
+	}));
+
+	passport.use('local-signin', new LocalStrategy({
+		usernameField: 'username',
+		passwordField: 'password',
+	},
+	function(username, password, done) {
+		User.findOne({
+			'local.username': username
+		},
+		function(err, user) {
+			// if an exception occured
+			if (err) {
+				console.log(err);
+				return done(err);
+			}
+
+			if(!user) {
+				console.log("username doesn't exist");
+				return done(null, false);
+			}
+
+			if(!user.validPassword(password)) {
+				console.log("invalid password");
+				return done(null, false);
+			}
+
+			console.log("all good");
+			return done(null, user);
+		});
+	}));
 };
