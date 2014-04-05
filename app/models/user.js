@@ -2,62 +2,25 @@
  * module dependencies
  */
 var mongoose = require("mongoose");
-var crypto = require('crypto');
+var bcrypt = require('bcrypt-nodejs');
 
 // user schema
-var UserSchema = new mongoose.Schema({
-	username: {
-		type: String,
-        trim: true
-	},
-    email: {
-        type: String,
-        trim: true
-    },
-    password: {
-        type: String
-    },
-	provider: {
-		type: String,
-		required: 'Provider is required'
-	},
-	salt: {
-		type: String
-	},
-	name: {
-		first: {
-			type: String
-		},
-		last: {
-			type: String
-		}
-	},
-	created: {
-		type: Date,
-		default: Date.now
-	}
+var userSchema = new mongoose.Schema({
+	local: {
+        username: String,
+        password: String
+    }
 });
 
-// before saving new user
-UserSchema.pre('save', function(next) {
-	if(this.password) {
-		this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
-		this.password = this.hashPassword(this.password);
-	}
-
-	next();
-});
-
-// hash password
-UserSchema.methods.hashPassword = function(password) {
-	return crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64');
+// generate password hash
+userSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
-// compare passwords
-UserSchema.methods.authenticate = function(password) {
-	return this.password === this.hashPassword(password);
+// checking if password is valid
+userSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.local.password);
 };
 
-// expose model
-var User = mongoose.model("User", UserSchema);
-module.exports = User;
+// create the model for users and expose it to our app
+module.exports = mongoose.model('User', userSchema);

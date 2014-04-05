@@ -26,11 +26,23 @@ module.exports = function(app, passport) {
      * authentication routes
      */
     app.route('/auth/signup')
-        .post(auth.signup);
+        .post(passport.authenticate('local-signup'), function(req, res) {
+            res.send();
+        });
 
     app.route('/auth/signin')
-        .post(auth.signin);
+        .post(passport.authenticate('local-signin'), function(req, res) {
+            res.send();
+        });
 
     app.route('/auth/signout')
-        .get(auth.signout);
+        .get(function(req, res) {
+            req.logout();
+            res.redirect('/#/');
+        });
+
+    app.route('/auth/isLoggedIn')
+        .get(function(req, res) {
+            res.send(req.isAuthenticated() ? req.user : '0');
+        });
 };
