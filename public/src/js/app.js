@@ -5,7 +5,7 @@ var meancrud = angular.module('meancrud', [
 meancrud.config([
     '$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
-        //$urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/');
         $stateProvider
 			// front page
             .state('index', {

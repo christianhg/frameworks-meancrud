@@ -1,11 +1,7 @@
 meancrud.controller('MoviesCtrl', [
-    '$scope', '$http', '$location', 'Movies',
-    function($scope, $http, $location, Movies) {
-        $http.get('/auth/isLoggedIn').success(function(user) {
-            if(user === '0') {
-                $location.path('/');
-            }
-        });
+    '$scope', 'Authentication', 'Movies',
+    function($scope, Authentication, Movies) {
+        Authentication.isNotLoggedIn('/');
 
         $scope.deleteMovie = function(id) {
             Movies.delete({}, {'id': id}, function(movies) {

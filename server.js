@@ -1,15 +1,15 @@
 /*
  * module dependencies
  */
-var express = require('express'),
-    morgan = require('morgan'),
-    bodyParser = require('body-parser'),
-    session = require('express-session'),
-    flash = require('connect-flash'),
-    cookieParser = require('cookie-parser'),
-    methodOverride = require('method-override'),
-    mongoose = require('mongoose'),
-    passport = require('passport');
+var express = require('express');
+var morgan = require('morgan');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+var flash = require('connect-flash');
+var cookieParser = require('cookie-parser');
+var methodOverride = require('method-override');
+var mongoose = require('mongoose');
+var passport = require('passport');
 
 /*
  * config files

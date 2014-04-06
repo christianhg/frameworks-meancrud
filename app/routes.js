@@ -9,40 +9,43 @@ module.exports = function(app, passport) {
      */
     app.route('/api/movies')
         // get all movies
-        .get(movies.getMovies)
+        .get(isLoggedIn, movies.getMovies)
         // save new movie
-        .post(movies.saveMovie)
+        .post(isLoggedIn, movies.saveMovie)
         // update existing movie
-        .put(movies.updateMovie);
+        .put(isLoggedIn, movies.updateMovie);
 
     // movie api routes with id parameter
     app.route('/api/movies/:id')
         // get movie by id
-        .get(movies.getMovie)
+        .get(isLoggedIn, movies.getMovie)
         // delete movie by id
-        .delete(movies.deleteMovie);
+        .delete(isLoggedIn, movies.deleteMovie);
 
     /*
      * authentication routes
      */
+    // sign out
     app.route('/auth/signup')
-        .post(passport.authenticate('local-signup'), function(req, res) {
-            res.send();
-        });
+        .post(passport.authenticate('local-signup'), auth.signup);
 
+    // sign in
     app.route('/auth/signin')
-        .post(passport.authenticate('local-signin'), function(req, res) {
-            res.send();
-        });
+        .post(passport.authenticate('local-signin'), auth.signin);
 
+    // sign out
     app.route('/auth/signout')
-        .get(function(req, res) {
-            req.logout();
-            res.redirect('/#/');
-        });
+        .get(auth.signout);
 
+    // check authentication
     app.route('/auth/isLoggedIn')
-        .get(function(req, res) {
-            res.send(req.isAuthenticated() ? req.user : '0');
-        });
+        .get(auth.isLoggedIn);
+
+    // route middleware to check login
+    function isLoggedIn(req, res, next) {
+        if(req.isAuthenticated()) {
+            return next();
+        }
+        res.redirect('/');
+    }
 };

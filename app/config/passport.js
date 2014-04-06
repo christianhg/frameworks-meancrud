@@ -25,11 +25,10 @@ module.exports = function(passport) {
 		function(err, user) {
 			// if an exception occured
 			if (err) {
-				console.log(err);
 				return done(err);
 			}
 			if(user) {
-				console.log("username already taken");
+				// uername already taken
 				return done(null, false);
 			} else {
 				var newUser = new User();
@@ -57,21 +56,20 @@ module.exports = function(passport) {
 		function(err, user) {
 			// if an exception occured
 			if (err) {
-				console.log(err);
 				return done(err);
 			}
 
 			if(!user) {
-				console.log("username doesn't exist");
+				// username doesn't exist
 				return done(null, false);
 			}
 
 			if(!user.validPassword(password)) {
-				console.log("invalid password");
+				// invalid password
 				return done(null, false);
 			}
 
-			console.log("all good");
+			// all good
 			return done(null, user);
 		});
 	}));
